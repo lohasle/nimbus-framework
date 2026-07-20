@@ -1,0 +1,4 @@
+com.nimbus.framework.idempotent.config.NimbusIdempotentConfiguration
+com.nimbus.framework.lock4j.config.NimbusLock4jConfiguration
+com.nimbus.framework.ratelimiter.config.NimbusRateLimiterConfiguration
+com.nimbus.framework.signature.config.NimbusApiSignatureAutoConfiguration

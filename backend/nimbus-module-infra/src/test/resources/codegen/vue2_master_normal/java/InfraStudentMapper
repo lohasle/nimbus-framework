@@ -1,0 +1,30 @@
+package com.nimbus.module.infra.dal.mysql.demo;
+
+import java.util.*;
+
+import com.nimbus.framework.common.pojo.PageResult;
+import com.nimbus.framework.mybatis.core.query.LambdaQueryWrapperX;
+import com.nimbus.framework.mybatis.core.mapper.BaseMapperX;
+import com.nimbus.module.infra.dal.dataobject.demo.InfraStudentDO;
+import org.apache.ibatis.annotations.Mapper;
+import com.nimbus.module.infra.controller.admin.demo.vo.*;
+
+/**
+ * 学生 Mapper
+ *
+ * @author Nimbus Framework
+ */
+@Mapper
+public interface InfraStudentMapper extends BaseMapperX<InfraStudentDO> {
+
+    default PageResult<InfraStudentDO> selectPage(InfraStudentPageReqVO reqVO) {
+        return selectPage(reqVO, new LambdaQueryWrapperX<InfraStudentDO>()
+                .likeIfPresent(InfraStudentDO::getName, reqVO.getName())
+                .eqIfPresent(InfraStudentDO::getBirthday, reqVO.getBirthday())
+                .eqIfPresent(InfraStudentDO::getSex, reqVO.getSex())
+                .eqIfPresent(InfraStudentDO::getEnabled, reqVO.getEnabled())
+                .betweenIfPresent(InfraStudentDO::getCreateTime, reqVO.getCreateTime())
+                .orderByDesc(InfraStudentDO::getId));
+    }
+
+}

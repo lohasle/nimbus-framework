@@ -1,0 +1,13 @@
+.DS_Store
+.idea/
+.vscode/
+.playwright-cli/
+output/
+logs/
+.run/
+**/target/
+**/.flattened-pom.xml
+frontend/node_modules/
+frontend/dist*/
+frontend/.eslintcache
+*.log

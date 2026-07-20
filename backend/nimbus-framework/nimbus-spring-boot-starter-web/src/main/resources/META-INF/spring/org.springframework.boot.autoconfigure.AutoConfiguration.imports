@@ -1,0 +1,7 @@
+com.nimbus.framework.apilog.config.NimbusApiLogAutoConfiguration
+com.nimbus.framework.jackson.config.NimbusJacksonAutoConfiguration
+com.nimbus.framework.swagger.config.NimbusSwaggerAutoConfiguration
+com.nimbus.framework.web.config.NimbusWebAutoConfiguration
+com.nimbus.framework.xss.config.NimbusXssAutoConfiguration
+com.nimbus.framework.banner.config.NimbusBannerAutoConfiguration
+com.nimbus.framework.encrypt.config.NimbusApiEncryptAutoConfiguration

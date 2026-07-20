@@ -1,0 +1,3 @@
+com.nimbus.framework.datasource.config.NimbusDataSourceAutoConfiguration
+com.nimbus.framework.mybatis.config.NimbusMybatisAutoConfiguration
+com.nimbus.framework.translate.config.NimbusTranslateAutoConfiguration

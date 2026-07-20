@@ -1,0 +1,2 @@
+com.nimbus.framework.quartz.config.NimbusQuartzAutoConfiguration
+com.nimbus.framework.quartz.config.NimbusAsyncAutoConfiguration

@@ -1,0 +1,9 @@
+NIMBUS PLATFORM · Nimbus Framework
+Application Version: ${nimbus.info.version}
+Spring Boot Version: ${spring-boot.version}
+
+ __  __  _   _  ____   _____
+|  \/  || | | |/ ___| | ____|
+| |\/| || | | |\___ \ |  _|
+| |  | || |_| | ___) || |___
+|_|  |_| \___/ |____/ |_____|

@@ -1,0 +1,70 @@
+name: nimbus-platform
+
+services:
+  postgres:
+    profiles: ["postgres"]
+    image: postgres:17-alpine
+    container_name: nimbus-postgres
+    environment:
+      POSTGRES_DB: nimbus_platform
+      POSTGRES_USER: nimbus
+      POSTGRES_PASSWORD: nimbus_dev
+      TZ: Asia/Shanghai
+    ports:
+      - "25432:5432"
+    volumes:
+      - nimbus-postgres-data:/var/lib/postgresql/data
+      - ./backend/sql/postgresql/nimbus-platform.sql:/docker-entrypoint-initdb.d/01-nimbus-platform.sql:ro
+      - ./backend/sql/postgresql/quartz.sql:/docker-entrypoint-initdb.d/02-quartz.sql:ro
+      - ./backend/sql/postgresql/member.sql:/docker-entrypoint-initdb.d/03-member.sql:ro
+      - ./backend/sql/postgresql/nimbus-customize.sql:/docker-entrypoint-initdb.d/04-nimbus-customize.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nimbus -d nimbus_platform"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4-alpine
+    container_name: nimbus-redis
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "26379:6379"
+    volumes:
+      - nimbus-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.4
+    container_name: nimbus-mysql
+    environment:
+      MYSQL_DATABASE: nimbus_platform
+      MYSQL_USER: nimbus
+      MYSQL_PASSWORD: nimbus_dev
+      MYSQL_ROOT_PASSWORD: nimbus_root_dev
+      TZ: Asia/Shanghai
+    ports:
+      - "23306:3306"
+    volumes:
+      - nimbus-mysql-data:/var/lib/mysql
+      - ./backend/sql/mysql/nimbus-platform.sql:/docker-entrypoint-initdb.d/01-nimbus-platform.sql:ro
+      - ./backend/sql/mysql/quartz.sql:/docker-entrypoint-initdb.d/02-quartz.sql:ro
+      - ./backend/sql/mysql/member.sql:/docker-entrypoint-initdb.d/03-member.sql:ro
+      - ./backend/sql/mysql/nimbus-customize.sql:/docker-entrypoint-initdb.d/04-nimbus-customize.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u nimbus -pnimbus_dev --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+volumes:
+  nimbus-postgres-data:
+  nimbus-redis-data:
+  nimbus-mysql-data:

@@ -1,0 +1,2 @@
+com.nimbus.framework.redis.config.NimbusRedisAutoConfiguration
+com.nimbus.framework.redis.config.NimbusCacheAutoConfiguration

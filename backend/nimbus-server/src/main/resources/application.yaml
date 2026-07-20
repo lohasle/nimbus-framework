@@ -1,0 +1,162 @@
+spring:
+  application:
+    name: nimbus-server
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  main:
+    allow-circular-references: true
+  servlet:
+    multipart:
+      max-file-size: 16MB
+      max-request-size: 32MB
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+  cache:
+    type: REDIS
+    redis:
+      time-to-live: 1h
+  data:
+    redis:
+      repositories:
+        enabled: false
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui
+  default-flat-param-object: true
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: NONE
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+    banner: false
+  type-aliases-package: ${nimbus.info.base-package}.module.*.dal.dataobject
+  encryptor:
+    password: ${MYBATIS_ENCRYPTOR_PASSWORD:change-me-in-production}
+
+mybatis-plus-join:
+  banner: false
+  sub-table-logic: true
+  ms-cache: true
+  table-alias: t
+  logic-del-type: on
+
+aj:
+  captcha:
+    cache-type: redis
+    cache-number: 1000
+    timing-clear: 180
+    type: blockPuzzle
+    water-mark: Nimbus
+    interference-options: 0
+    req-frequency-limit-enable: false
+
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health,info,metrics,prometheus,loggers
+  endpoint:
+    health:
+      show-details: when_authorized
+  tracing:
+    sampling:
+      probability: ${TRACING_SAMPLING_PROBABILITY:1.0}
+
+nimbus:
+  info:
+    version: 1.0.0
+    base-package: com.nimbus
+  web:
+    admin-ui:
+      url: ${NIMBUS_ADMIN_UI_URL:http://localhost:3001}
+  xss:
+    enable: true
+    exclude-urls:
+      - /actuator/**
+  security:
+    permit-all-urls:
+      - /actuator/health
+      - /app-api/application/health
+      - /app-api/im/health
+      - /app-api/app/health
+  api-encrypt:
+    enable: false
+  websocket:
+    enable: true
+    path: /infra/ws
+    sender-type: local
+  swagger:
+    title: Nimbus Framework API
+    description: Nimbus运营后台与 App 的统一接口
+    version: ${nimbus.info.version}
+    url: ${nimbus.web.admin-ui.url}
+    email: platform@nimbus.com
+    license: MIT
+  codegen:
+    base-package: ${nimbus.info.base-package}
+    db-schemas: ${NIMBUS_DB_SCHEMA:public}
+    front-type: 20
+    vo-type: 10
+    delete-batch-enable: true
+    unit-test-enable: true
+    import-enable: false
+  tenant:
+    enable: true
+    ignore-urls:
+      - /app-api/application/health
+      - /app-api/im/health
+      - /app-api/app/health
+    ignore-visit-urls:
+      - /admin-api/system/user/profile/**
+      - /admin-api/system/auth/**
+      - /app-api/application/health
+      - /app-api/im/health
+      - /app-api/app/health
+    ignore-caches:
+      - user_role_ids
+      - permission_menu_ids
+      - oauth_client
+  sms-code:
+    expire-times: 10m
+    send-frequency: 1m
+    send-maximum-quantity-per-day: 10
+    begin-code: 100000
+    end-code: 999999
+  tracer:
+    enable: true
+  metrics:
+    enable: true
+  access-log:
+    enable: true
+  demo: false
+  pay:
+    order-notify-url: ${NIMBUS_PAY_ORDER_NOTIFY_URL:http://localhost:58080/admin-api/pay/notify/order}
+    refund-notify-url: ${NIMBUS_PAY_REFUND_NOTIFY_URL:http://localhost:58080/admin-api/pay/notify/refund}
+    transfer-notify-url: ${NIMBUS_PAY_TRANSFER_NOTIFY_URL:http://localhost:58080/admin-api/pay/notify/transfer}
+
+logging:
+  file:
+    name: ${LOG_FILE:./logs/${spring.application.name}.log}
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    com.nimbus: INFO
+
+debug: false

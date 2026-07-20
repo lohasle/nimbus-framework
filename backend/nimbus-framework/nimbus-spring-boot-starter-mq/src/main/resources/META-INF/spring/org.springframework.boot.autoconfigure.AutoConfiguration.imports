@@ -1,0 +1,3 @@
+com.nimbus.framework.mq.redis.config.NimbusRedisMQProducerAutoConfiguration
+com.nimbus.framework.mq.redis.config.NimbusRedisMQConsumerAutoConfiguration
+com.nimbus.framework.mq.rabbitmq.config.NimbusRabbitMQAutoConfiguration

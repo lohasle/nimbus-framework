@@ -1,0 +1,73 @@
+server:
+  port: ${SERVER_PORT:58080}
+
+spring:
+  autoconfigure:
+    exclude:
+      - org.dromara.trans.config.TransServiceConfig
+  datasource:
+    druid:
+      web-stat-filter:
+        enabled: true
+      stat-view-servlet:
+        enabled: false
+      filter:
+        stat:
+          enabled: true
+          log-slow-sql: true
+          slow-sql-millis: 300
+    dynamic:
+      druid:
+        initial-size: 1
+        min-idle: 1
+        max-active: 20
+        max-wait: 60000
+        validation-query: SELECT 1
+        test-while-idle: true
+      primary: master
+      strict: true
+      datasource:
+        master:
+          driver-class-name: ${NIMBUS_DB_DRIVER:com.mysql.cj.jdbc.Driver}
+          url: ${NIMBUS_DB_URL:jdbc:mysql://127.0.0.1:23306/nimbus_platform?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai&nullCatalogMeansCurrent=true&rewriteBatchedStatements=true}
+          username: ${NIMBUS_DB_USERNAME:nimbus}
+          password: ${NIMBUS_DB_PASSWORD:nimbus_dev}
+  data:
+    redis:
+      host: ${NIMBUS_REDIS_HOST:127.0.0.1}
+      port: ${NIMBUS_REDIS_PORT:26379}
+      database: ${NIMBUS_REDIS_DATABASE:0}
+  boot:
+    admin:
+      context-path: /admin
+      frame-ancestors: "'self' localhost:* 127.0.0.1:*"
+  quartz:
+    auto-startup: false
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org.quartz.scheduler.instanceName: nimbus-local
+      org.quartz.scheduler.instanceId: AUTO
+      org.quartz.jobStore.isClustered: true
+      org.quartz.threadPool.threadCount: 10
+
+nimbus:
+  captcha:
+    enable: false
+  security:
+    mock-enable: true
+  access-log:
+    enable: false
+
+# 本地仅创建微信 SDK 所需的占位 Bean，不会发起真实平台调用。
+wx:
+  mp:
+    app-id: ${NIMBUS_WX_MP_APP_ID:local-placeholder}
+    secret: ${NIMBUS_WX_MP_SECRET:local-placeholder}
+  miniapp:
+    appid: ${NIMBUS_WX_MA_APP_ID:local-placeholder}
+    secret: ${NIMBUS_WX_MA_SECRET:local-placeholder}
+
+justauth:
+  enabled: false

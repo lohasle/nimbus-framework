@@ -1,0 +1,2 @@
+com.nimbus.framework.tracer.config.NimbusTracerAutoConfiguration
+com.nimbus.framework.tracer.config.NimbusMetricsAutoConfiguration

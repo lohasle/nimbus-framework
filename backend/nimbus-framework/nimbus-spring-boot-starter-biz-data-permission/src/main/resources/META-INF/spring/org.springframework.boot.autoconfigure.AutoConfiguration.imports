@@ -1,0 +1,2 @@
+com.nimbus.framework.datapermission.config.NimbusDataPermissionAutoConfiguration
+com.nimbus.framework.datapermission.config.NimbusDeptDataPermissionAutoConfiguration
