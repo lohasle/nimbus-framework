@@ -3,51 +3,135 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Nimbus Framework：Java 与 Go、单体与微服务四套创业团队工程底座。" />
-    <title>Nimbus Framework</title>
-    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <meta name="description" content="Nimbus Framework：面向 APP 与运营后台的 Java / Go 单体与微服务脚手架。" />
+    <title>Nimbus Framework · 四套企业应用底座</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="site-header">
+    <header class="nav shell">
       <a class="brand" href="#top" aria-label="Nimbus Framework 首页">
-        <svg viewBox="0 0 64 64" aria-hidden="true">
-          <defs><linearGradient id="brand-gradient" x1="8" y1="5" x2="58" y2="60"><stop stop-color="#22c7f2"/><stop offset=".48" stop-color="#2563eb"/><stop offset="1" stop-color="#6d4aff"/></linearGradient></defs>
-          <rect width="64" height="64" rx="16" fill="url(#brand-gradient)"/>
-          <path d="M17 43V21h5.5L32 33.6 41.5 21H47v22h-6.2V31.2L32 42.4l-8.8-11.2V43H17Z" fill="#fff"/>
-          <circle cx="49" cy="15" r="3.5" fill="#fff" fill-opacity=".92"/>
-        </svg>
+        <span class="brand-mark">M</span>
         <span>Nimbus Framework</span>
       </a>
       <nav aria-label="主导航">
-        <a href="#editions">版本</a><a href="#architecture">选型</a><a href="https://github.com/lohasle/nimbus-framework">GitHub</a>
+        <a href="#frameworks">框架矩阵</a>
+        <a href="#docs">工程文档</a>
+        <a href="#preview">界面预览</a>
+        <a class="nav-github" href="https://github.com/lohasle/nimbus-framework">GitHub</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero">
-        <div class="eyebrow">ONE DESIGN · FOUR EDITIONS</div>
-        <h1>从清晰的工程底座开始，<br /><span>选择适合团队的演进路线。</span></h1>
-        <p>统一的新运营后台 UI、MySQL 8.4 默认基线，以及 Java / Go、单体 / 微服务四种可独立交付的工程形态。</p>
-        <div class="actions"><a class="primary" href="#editions">查看四套框架</a><a class="secondary" href="https://github.com/lohasle/nimbus-framework/blob/main/docs/README.md">阅读文档</a></div>
-        <div class="facts" aria-label="技术基线"><span>MySQL 8.4</span><span>Vue 3</span><span>OpenAPI</span><span>Trace ID</span></div>
-      </section>
-
-      <section id="editions" class="section">
-        <div class="section-title"><div><div class="eyebrow">FRAMEWORK MATRIX</div><h2>四套框架，同一套产品体验</h2></div><p>创业初期优先单体；团队与流量边界明确后，再选择微服务版本。</p></div>
-        <div class="cards">
-          <article class="card featured"><div class="card-top"><span class="lang java">JAVA</span><span class="badge">推荐起步</span></div><h3>Nimbus Framework</h3><p>模块化单体，一个 JVM 保留系统、基础设施、会员与支付边界，部署和排障成本最低。</p><dl><div><dt>运行形态</dt><dd>模块化单体</dd></div><div><dt>适合</dt><dd>创业团队 / 快速迭代</dd></div></dl><div class="links"><a href="https://github.com/lohasle/nimbus-framework">源码 →</a><a href="https://github.com/lohasle/nimbus-framework/blob/main/docs/README.md">文档</a></div></article>
-          <article class="card"><div class="card-top"><span class="lang java">JAVA</span><span class="badge muted">微服务</span></div><h3>Nimbus Cloud Framework</h3><p>基于 Spring Cloud 的六进程版本，包含网关、注册发现与完整服务治理基线。</p><dl><div><dt>运行形态</dt><dd>网关 + 领域服务</dd></div><div><dt>适合</dt><dd>多人团队 / 独立扩缩容</dd></div></dl><div class="links"><a href="https://github.com/lohasle/nimbus-cloud-framework">源码 →</a><a href="https://github.com/lohasle/nimbus-cloud-framework/tree/main/docs">文档</a></div></article>
-          <article class="card"><div class="card-top"><span class="lang go">GO</span><span class="badge muted">轻量单体</span></div><h3>Nimbus Framework Go</h3><p>Go 1.26 与 Gin 的轻量运营底座，保留领域健康边界，Redis 可按需引入。</p><dl><div><dt>运行形态</dt><dd>单 Go 进程</dd></div><div><dt>适合</dt><dd>资源敏感 / Go 团队</dd></div></dl><div class="links"><a href="https://github.com/lohasle/nimbus-framework-go">源码 →</a><a href="https://github.com/lohasle/nimbus-framework-go#readme">文档</a></div></article>
-          <article class="card"><div class="card-top"><span class="lang go">GO</span><span class="badge muted">微服务</span></div><h3>Nimbus Cloud Framework Go</h3><p>六个可独立运行的 Go 服务，Nacos 注册发现，网关具备静态回退能力。</p><dl><div><dt>运行形态</dt><dd>网关 + 领域服务</dd></div><div><dt>适合</dt><dd>高并发 / 细粒度部署</dd></div></dl><div class="links"><a href="https://github.com/lohasle/nimbus-cloud-framework-go">源码 →</a><a href="https://github.com/lohasle/nimbus-cloud-framework-go#readme">文档</a></div></article>
+      <section class="hero shell">
+        <div class="hero-copy">
+          <p class="eyebrow">JAVA · GO · MONOLITH · MICROSERVICES</p>
+          <h1>一套产品体验，<br /><span>四种工程形态。</span></h1>
+          <p class="hero-lead">
+            面向 APP 后台与企业运营平台的免费开源底座。共享 Nimbus 新 UI、MySQL 8.4
+            数据基线与清晰的 System、Infra、Member、Pay 模块边界。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#frameworks">选择框架</a>
+            <a class="button secondary" href="https://github.com/lohasle/nimbus-framework/tree/main/docs">阅读文档</a>
+          </div>
+          <ul class="hero-facts" aria-label="核心特性">
+            <li><strong>4</strong><span>套框架</span></li>
+            <li><strong>MySQL 8.4</strong><span>默认数据库</span></li>
+            <li><strong>OpenAPI</strong><span>接口契约</span></li>
+          </ul>
+        </div>
+        <div class="hero-panel" aria-label="架构摘要">
+          <div class="panel-glow"></div>
+          <p class="panel-label">NIMBUS PLATFORM</p>
+          <div class="layer">
+            <span>统一运营后台</span><small>Vue 3 · Element Plus · Light UI</small>
+          </div>
+          <div class="connector"></div>
+          <div class="module-grid">
+            <span>System</span><span>Infra</span><span>Member</span><span>Pay</span>
+          </div>
+          <div class="connector"></div>
+          <div class="layer compact">
+            <span>MySQL 8.4</span><small>Redis · Nacos · Observability</small>
+          </div>
         </div>
       </section>
 
-      <section id="architecture" class="section decision">
-        <div><div class="eyebrow">DECISION GUIDE</div><h2>先解决业务，再增加分布式成本</h2><p>四套工程共享 UI 与接口约定，迁移时可以保留用户心智和前端资产。单体并不是临时 Demo，而是具备明确模块边界的正式交付形态。</p></div>
-        <ol><li><span>01</span><div><strong>默认选模块化单体</strong><small>人员较少、领域仍在快速变化时，优先 Java 或 Go 单体。</small></div></li><li><span>02</span><div><strong>按真实瓶颈拆分</strong><small>出现独立扩缩容、故障隔离或团队自治需求后，再采用 Cloud 版本。</small></div></li><li><span>03</span><div><strong>保持数据库基线一致</strong><small>四套工程默认 MySQL 8.4，降低本地、测试与部署环境差异。</small></div></li></ol>
+      <section id="frameworks" class="section shell">
+        <div class="section-heading">
+          <p class="eyebrow">FRAMEWORK MATRIX</p>
+          <h2>按团队与部署形态选择</h2>
+          <p>单体版适合创业团队快速交付；Cloud 版适合需要独立扩缩容与服务治理的平台。</p>
+        </div>
+        <div class="cards">
+          <article class="card featured">
+            <span class="tag">推荐起步</span>
+            <p class="card-language">JAVA</p>
+            <h3>Nimbus Framework</h3>
+            <p>模块化单体。完整 Java 业务底座，部署简单，适合创业公司与中小团队。</p>
+            <ul><li>JDK 25 / Spring Boot 4</li><li>单进程模块化部署</li><li>MySQL 8.4 + Redis</li></ul>
+            <a href="https://github.com/lohasle/nimbus-framework">查看仓库 →</a>
+          </article>
+          <article class="card">
+            <span class="tag muted">微服务</span>
+            <p class="card-language">JAVA</p>
+            <h3>Nimbus Cloud Framework</h3>
+            <p>Java 微服务版。System、Infra、Member、Pay 独立进程，内置网关和注册发现。</p>
+            <ul><li>Spring Cloud / Nacos</li><li>独立服务扩缩容</li><li>链路与监控基础</li></ul>
+            <a href="https://github.com/lohasle/nimbus-cloud-framework">查看仓库 →</a>
+          </article>
+          <article class="card">
+            <span class="tag muted">轻量单体</span>
+            <p class="card-language">GO</p>
+            <h3>Nimbus Framework Go</h3>
+            <p>Go 模块化单体。前后端分层，后端按领域模块组织，核心管理闭环已迁移。</p>
+            <ul><li>Go 1.26 / Gin</li><li>单二进制部署</li><li>Swagger 契约</li></ul>
+            <a href="https://github.com/lohasle/nimbus-framework-go">查看仓库 →</a>
+          </article>
+          <article class="card">
+            <span class="tag muted">轻量微服务</span>
+            <p class="card-language">GO</p>
+            <h3>Nimbus Cloud Framework Go</h3>
+            <p>Go 微服务版。统一网关和独立中心进程，兼顾低资源占用与清晰服务边界。</p>
+            <ul><li>Gin / Nacos</li><li>六进程参考拓扑</li><li>本地静态回退</li></ul>
+            <a href="https://github.com/lohasle/nimbus-cloud-framework-go">查看仓库 →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="docs" class="docs-section">
+        <div class="shell docs-layout">
+          <div class="section-heading">
+            <p class="eyebrow">ENGINEERING DOCUMENTS</p>
+            <h2>从架构到交付，都有明确边界</h2>
+            <p>文档与代码同仓维护，覆盖本地启动、架构、数据库适配、部署和 Agent 协作规范。</p>
+          </div>
+          <div class="doc-links">
+            <a href="https://github.com/lohasle/nimbus-framework/blob/main/docs/architecture.md"><span>01</span><strong>架构与模块边界</strong><small>Architecture</small></a>
+            <a href="https://github.com/lohasle/nimbus-framework/blob/main/docs/local-development.md"><span>02</span><strong>本地启动指南</strong><small>Local development</small></a>
+            <a href="https://github.com/lohasle/nimbus-framework/blob/main/docs/database-adapters.md"><span>03</span><strong>数据库适配</strong><small>MySQL / PostgreSQL</small></a>
+            <a href="https://github.com/lohasle/nimbus-framework/blob/main/docs/deployment.md"><span>04</span><strong>部署与资源规划</strong><small>Deployment</small></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="preview" class="section shell preview">
+        <div class="section-heading">
+          <p class="eyebrow">SHARED DESIGN SYSTEM</p>
+          <h2>四套框架，共享同一套新 UI</h2>
+          <p>浅色导航、统一品牌、登录页与 Loading 体验一致，业务表格和交互保持原有成熟实现。</p>
+        </div>
+        <div class="preview-grid">
+          <figure><img src="./assets/login.png" alt="Nimbus Framework 登录页" loading="lazy" /><figcaption>登录体验</figcaption></figure>
+          <figure><img src="./assets/admin.png" alt="Nimbus Framework 运营后台" loading="lazy" /><figcaption>运营后台</figcaption></figure>
+        </div>
       </section>
     </main>
-    <footer><span>© 2026 Nimbus Framework</span><span>Clean foundations for growing products.</span></footer>
+
+    <footer class="shell">
+      <div class="brand"><span class="brand-mark small">M</span><span>Nimbus Framework</span></div>
+      <p>Free and open source · Built for pragmatic teams.</p>
+      <a href="https://github.com/lohasle">github.com/lohasle</a>
+    </footer>
   </body>
 </html>

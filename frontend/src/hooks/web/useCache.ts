@@ -13,6 +13,7 @@ export const CACHE_KEY = {
   VisitTenantId: 'visitTenantId',
   // 系统设置
   IS_DARK: 'isDark',
+  UI_THEME_VERSION: 'nimbusUiThemeVersion',
   LANG: 'lang',
   THEME: 'theme',
   LAYOUT: 'layout',
