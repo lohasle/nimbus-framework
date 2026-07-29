@@ -1,3 +1,8 @@
+> [!IMPORTANT]
+> **Moved to [aiutil/nimbus-framework](https://github.com/aiutil/nimbus-framework). This repository is archived and no longer updated.**
+>
+> **本项目已迁移至 [aiutil/nimbus-framework](https://github.com/aiutil/nimbus-framework)。本仓库已归档，不再更新。**
+
 # Nimbus Framework
 
 > 四套 Nimbus 框架的版本导航与选型说明：[GitHub Pages](https://lohasle.github.io/nimbus-framework/)
